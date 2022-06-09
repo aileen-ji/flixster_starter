@@ -64,14 +64,14 @@ function hidePopup(){
 
 async function displayResults(result_param){
     for(let i = 0; i < result_param.length; i++){  
-        let poster = "https://image.tmdb.org/t/p/original"+result_param[i].poster_path
+        let poster = "https://image.tmdb.org/t/p/w500"+result_param[i].poster_path
         if(result_param[i].poster_path == null){
             poster = "images/noImage.png"
         }
   showPopup(result_param[i])
         moviesGrid.innerHTML += `
         <div class = "movie-card grid-item">
-            <img  onclick=showPopup(${result_param[i]}) class="movie-poster" src=${poster} alt=${result_param[i].original_title} id=${result_param[i].original_title}+"poster">
+            <img  onclick=showPopup${result_param[i]} class="movie-poster" src=${poster} alt=${result_param[i].original_title} id=${result_param[i].original_title}+"poster">
             <p id = "movie-votes"><span>&#x2B50</span>${result_param[i].vote_average}</p>
             <p id = "movie-title">${result_param[i].original_title}</p>
         </div>
