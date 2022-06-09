@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Flixster</title>
+    <header>
+        <h1>Flixster</h1>
+    </header>
+</head>
+<body>
+    <div id="search-bar">
+        <form>
+            <button id="search-btn"><i class="material-icons" id="search-icon">search</i></button>
+            <input id="search-input" type="text" placeholder="Type movie here..." name="gif">
+            <button id="close-search-btn"><i class="material-icons" id="close-icon">close</i></button>
+        </form>
+    </div>
+    <div id="now-in">
+    </div>
+    <div id="movies-grid" class="grid-container">
+        <!--All the movie cards, dynamically implement-->
+    </div>
+    <div id="load-more-div">
+        <button id="load-more-movies-btn" class = "hidden"><i class="material-icons" id="expand-icon">expand_circle_down</i></button>
+    </div>
+    <div id="popup-div" >
+    </div>
+    <footer id="credits">
+        <p>This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+        <img src="images/logo.svg">
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
