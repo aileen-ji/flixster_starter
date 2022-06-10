@@ -3,6 +3,7 @@
     padding:0;
     border-width: 0;
     background-color: transparent;
+    scroll-behavior: smooth;
 }
 
 header{
@@ -16,6 +17,8 @@ header{
 header h1{
     font-size: 80px;
     padding: 10px;
+    color: white;
+    text-shadow: 3px 4px 3px black;
 }
 
 p{
@@ -23,7 +26,7 @@ p{
 }
 
 body{
-    background: linear-gradient(to left top, #662D8C,#ED1E79,orange);
+    background: linear-gradient(to left top, #fbd786, #f7797d);
     background-attachment: fixed;
     justify-content: center;
     align-items: center;
@@ -83,7 +86,7 @@ h2{
 }
 
 .hidden{
-    display: none; 
+    display: none !important; 
 }
 
 .grid-container{
@@ -113,8 +116,8 @@ h2{
 }
 
 .movie-poster:hover{
-    box-shadow: 4px 7px black;
-    transition-duration: 0.7s;
+    opacity: 0.5;
+    transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
 }
 
@@ -133,22 +136,98 @@ h2{
     opacity: 0.8;
 }
 
-#popup{
+#popup-div{
     position: fixed;
-    left:20vw;
-    right:20vw;
-    top: 0;
+    left:15vw;
+    right:15vw;
+    top: 3vw;
     z-index: 100;
-    width: 60%;
-    height: 70%;
-    background-color: white;
+    width: 70%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding-bottom: 15px;
+    text-align: center;
+    border-radius: 20px;
+    color: black;
+    display: flexbox
 }
 
+#popup-div p{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+#popup-close-btn{
+    float: left;
+    padding-right: 10px;
+    color: black
+}
+
+#popup-div img{
+    padding: 10px;
+    width: 40vw;
+}
+
+.popup-top{
+    display: flex;
+    font-size: x-large;
+    color: black;
+    background-color: lightsalmon;
+    padding: 15px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
 
 footer{
-    width: 300px;
+    background: linear-gradient(rgba(0, 0, 0, 0), black);
+    padding: 40px;
+    display: flex;
+    align-items: baseline;
+    color: white
 }
 
 footer img{
     width: 100px;
+    float: left;
+    padding-right: 10px;
+}
+
+
+.dark-mode{
+    background: linear-gradient(#09203F, #537895);
+    color: white;
+}
+
+.dark-mode #popup-div{
+    filter: invert()
+}
+
+.dark-mode #popup-div img{
+    filter: invert()
+}
+
+.dark-mode #popup-div span{
+    filter: invert()
+}
+
+nav{
+    background: lightblue;
+    width: 30px;
+    padding: 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: fixed
+}
+
+ul{
+    list-style-type: none;
+}
+
+li{
+    padding: 5px;
+}
+
+li i:hover{
+    color: white;
 }

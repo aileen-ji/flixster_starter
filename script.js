@@ -10,7 +10,9 @@ let closeBtn = document.getElementById("close-search-btn")
 let moreBtn = document.getElementById("load-more-movies-btn")
 let moviesCurr = document.querySelector("#now-in")
 let popupElt = document.getElementById("popup-div")
-
+let dayNight = document.getElementById("switch-mode")
+let dayBtn = document.getElementById("day")
+let nightBtn = document.getElementById("night")
 
 let page = 1
 let currSearch = ""
@@ -19,6 +21,7 @@ let showingCurr = true;
 searchForm.addEventListener("submit", getUserInput)
 closeBtn.addEventListener("click", clearResults)
 moreBtn.addEventListener("click", loadMore)
+dayNight.addEventListener("click", switchMode)
 
 async function getUserInput(evt){
     evt.preventDefault();
@@ -29,6 +32,9 @@ async function getUserInput(evt){
     moviesGrid.innerHTML = ``
     
     let input = userInput.value;
+    if(input == null){
+        return;
+    }
     currSearch = input;
     let result = await getResults(input);
     displayResults(result)
@@ -43,40 +49,63 @@ async function getResults(input){
     return responseData.results;
 }
 
-function showPopup(poster_param){
-    console.log("clicked")
-    popupElt.classList.remove("hidden")
-    console.log(poster_param)
-    popupElt.innerHTML = `
-        <button id="popup-close-btn" onclick=hidePopup()><i class="material-icons" id="close-icon">close</i></button>
-        <img src="https://image.tmdb.org/t/p/w500${poster_param.backdrop_path}"
-        alt=${poster_param.original_title} ">
-        <p>${poster_param.original_title}</p>
-        <p>${poster_param.release_date}</p>
-        <p>${poster_param.overview}</p>
-    `
-    console.log(popupElt.innerHTML)
-}
+
 
 function hidePopup(){
     popupElt.classList.add("hidden")
 }
 
-async function displayResults(result_param){
-    for(let i = 0; i < result_param.length; i++){  
-        let poster = "https://image.tmdb.org/t/p/w500"+result_param[i].poster_path
-        if(result_param[i].poster_path == null){
+
+
+function displayResults(resultparam){
+    for(let i = 0; i < resultparam.length; i++){  
+        let poster = "https://image.tmdb.org/t/p/w500/"+resultparam[i].poster_path
+        if(resultparam[i].poster_path == null){
             poster = "images/noImage.png"
         }
-  showPopup(result_param[i])
+        
+        //console.log(resultparam[i]);
         moviesGrid.innerHTML += `
         <div class = "movie-card grid-item">
-            <img  onclick=showPopup${result_param[i]} class="movie-poster" src=${poster} alt=${result_param[i].original_title} id=${result_param[i].original_title}+"poster">
-            <p id = "movie-votes"><span>&#x2B50</span>${result_param[i].vote_average}</p>
-            <p id = "movie-title">${result_param[i].original_title}</p>
+            <img  class="movie-poster" src=${poster} alt=${resultparam[i].original_title} id=${i}>
+            <p id = "movie-votes"><span>&#x2B50</span>${resultparam[i].vote_average}</p>
+            <p id = "movie-title">${resultparam[i].original_title}</p>
         </div>
 `   
-    }   
+    
+    }
+    var posters = document.getElementsByClassName("movie-poster")  
+    for(let j = 0; j < resultparam.length; j++){
+        posters[j].addEventListener('click', myfunc, false);
+        posters[j].myParam = resultparam[j];
+    }
+    
+}
+
+function myfunc(evt){
+    evt.preventDefault()
+    showPopup(evt.target.myParam);
+}
+
+function showPopup(poster_param){
+    console.log("clicked")
+    popupElt.classList.remove("hidden")
+    console.log(poster_param)
+    popupElt.innerHTML = `
+    <div class = "popup-top">    
+    <button id="popup-close-btn" onclick=hidePopup()><i class="material-icons" id="close-icon">close</i></button>
+         <p class="original-title">${poster_param.original_title}</p>
+         </div>
+         <img src="https://image.tmdb.org/t/p/original${poster_param.backdrop_path}"
+        alt=${poster_param.original_title} ">
+        <p>${poster_param.release_date} | <span>&#x2B50</span>${poster_param.vote_average} | ${poster_param.original_language.toUpperCase()}</p>
+        <p>${poster_param.overview}</p>
+    `
+    console.log(popupElt.innerHTML)
+}
+
+function testAlert(poster_param){
+    console.log(poster_param);
 }
 
 async function loadMore(){
@@ -106,7 +135,7 @@ function showMoreBtn(){
 
 function clearResults(){
     console.log("cleared")
-    userInput.value = "";
+    userInput.value = ""
     moviesGrid.innerHTML = ``
     currSearch = ""
     nowPlaying();
@@ -120,14 +149,32 @@ async function getCurr(){
 }
 
 async function nowPlaying(){
+    console.log("playing")
     page = 1;
     showingCurr = true
     hideMoreBtn();
-    moviesCurr.innerHTML = `<h2>Now Playing</h2>`
+    
     moviesGrid.innerHTML = ``
     curr_result = await getCurr();
+    console.log("got")
     displayResults(curr_result)
+    moviesCurr.innerHTML = `<h2>Now playing</h2>`
     showMoreBtn();
+}
+
+function switchMode(){
+    if(nightBtn.classList.contains("hidden")){
+        nightBtn.classList.remove("hidden")
+        dayBtn.classList.add("hidden")
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+    else{
+        dayBtn.classList.remove("hidden")
+        nightBtn.classList.add("hidden")
+        var element = document.body;
+        element.classList.remove("dark-mode");
+    }
 }
 
 window.onload = function(){
