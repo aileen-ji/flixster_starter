@@ -42,7 +42,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://aileen-ji.gith
 
 ### Walkthrough Video
 
-![]https://github.com/aileen-ji/flixster_starter/blob/main/images/walkthrough_new.gif
+![](https://github.com/aileen-ji/flixster_starter/blob/main/images/walkthrough_new.gif)
 
 ### Reflection
 
