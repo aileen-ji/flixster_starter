@@ -59,7 +59,7 @@ I was able to show most of my features, and a lot of people liked the mode switc
 
 ### Open-source libraries used
 
-- TMDB API(https://www.themoviedb.org/documentation/api), google material design icons(https://fonts.google.com/icons)
+- TMDB API(https://www.themoviedb.org/documentation/api), google material design icons/google fonts(https://fonts.google.com/icons)
 
 ### Shout out
 
