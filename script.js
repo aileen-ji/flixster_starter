@@ -68,7 +68,6 @@ function displayResults(resultparam){
             poster = "images/noImage.png"
         }
         
-        //console.log(resultparam[i]);
         moviesGrid.innerHTML += `
         <div class = "movie-card grid-item">
             <img  class="movie-poster" src=${poster} alt=${resultparam[i].original_title} id=${i}>
@@ -102,7 +101,6 @@ async function showPopup(poster_param){
     else{
         link = "https://www.youtube.com/embed/"+videoresponseData.results[0].key
     }
-    console.log(link)
     popupElt.classList.remove("hidden")
     popupElt.innerHTML = `
     <div class = "popup-top">    
@@ -115,11 +113,6 @@ async function showPopup(poster_param){
         <p>${poster_param.release_date} | <span>&#x2B50</span>${poster_param.vote_average} | ${poster_param.original_language.toUpperCase()}</p>
         <p>${poster_param.overview}</p>
     `
-    console.log(popupElt.innerHTML)
-}
-
-function testAlert(poster_param){
-    console.log(poster_param);
 }
 
 async function loadMore(){
@@ -148,7 +141,6 @@ function showMoreBtn(){
 }
 
 function clearResults(){
-    console.log("cleared")
     userInput.value = ""
     moviesGrid.innerHTML = ``
     currSearch = ""
@@ -163,14 +155,12 @@ async function getCurr(){
 }
 
 async function nowPlaying(){
-    console.log("playing")
     page = 1;
     showingCurr = true
     hideMoreBtn();
     
     moviesGrid.innerHTML = ``
     curr_result = await getCurr();
-    console.log("got")
     displayResults(curr_result)
     moviesCurr.innerHTML = `<h2>Now playing</h2>`
     showMoreBtn();
