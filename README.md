@@ -55,7 +55,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://aileen-ji.gith
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+* I was able to show most of my features, and a lot of people liked the mode switch! I want to add filtered searches and error handling. 
 
 ### Open-source libraries used
 
@@ -63,4 +63,4 @@ Add your response here
 
 ### Shout out
 
-Thanks to Rebecca for helping me so much with this project! I wouldn't have been able to get so far without your help.
+Thanks to Rebecca and Anitya for helping me so much with this project! I wouldn't have been able to get so far without your help.

@@ -97,7 +97,7 @@ async function showPopup(poster_param){
     let videoresponseData = await videoresponse.json();
     let link; 
     if(videoresponseData.results.length == 0){
-        link = "images/noImage.png"
+        link = "images/noVid.png"
     }
     else{
         link = "https://www.youtube.com/embed/"+videoresponseData.results[0].key

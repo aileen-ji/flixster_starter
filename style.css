@@ -10,7 +10,7 @@
 header{
     display: flex;
     justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto Slab', serif;
     padding: 30px;
     align-items:flex-start;
     background: linear-gradient(salmon, rgba(0,0,0,0));
@@ -28,7 +28,8 @@ header h1{
 }
 
 p{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nuosu SIL', serif;
+
 }
 
 body{
@@ -88,12 +89,13 @@ h2{
     display: flex;
     align-self: center;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Playfair Display SC', serif;
 }
 
 .hidden{
     display: none !important; 
 }
+
 
 .grid-container{
     display: grid;
@@ -117,14 +119,18 @@ h2{
 
 .movie-poster{
     width: 200px;
-    border-radius: 10px;
-    box-shadow: 3px 6px #888888;
+    border-radius: 5px;
+    height: 280px;
 }
 
 .movie-poster:hover{
-    opacity: 0.5;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
+    box-shadow: 0 0 15px #241717
+}
+
+.dark-mode .movie-poster:hover{
+    box-shadow: 0 0 15px #007bff
 }
 
 #load-more-div{
@@ -157,7 +163,6 @@ h2{
     color: black;
     display: flexbox;
     overflow: hidden;
-   
 }
 
 #popup-div p{
@@ -180,7 +185,6 @@ h2{
     left:0;
     overflow: hidden;
     opacity: 0.3;
-    
 }
 
 .popup-top{
@@ -209,6 +213,7 @@ footer img{
 
 iframe{
     padding: 20px;
+
 }
 
 .dark-mode{
@@ -226,12 +231,16 @@ iframe{
 }
 
 nav{
-    background: lightblue;
+    background: peachpuff;
     width: 30px;
     padding: 10px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     position: fixed
+}
+
+.dark-mode nav{
+    background: aliceblue;
 }
 
 ul{
@@ -244,4 +253,8 @@ li{
 
 li i:hover{
     color: white;
+}
+
+.dark-mode li i:hover{
+    color: dodgerblue;
 }
