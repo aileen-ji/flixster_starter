@@ -91,17 +91,27 @@ function myfunc(evt){
     showPopup(evt.target.myParam);
 }
 
-function showPopup(poster_param){
-    console.log("clicked")
+async function showPopup(poster_param){
+    let video = "https://api.themoviedb.org/3/movie/"+poster_param.id+"/videos?api_key="+API_KEY
+    let videoresponse = await fetch(video);
+    let videoresponseData = await videoresponse.json();
+    let link; 
+    if(videoresponseData.results.length == 0){
+        link = "images/noImage.png"
+    }
+    else{
+        link = "https://www.youtube.com/embed/"+videoresponseData.results[0].key
+    }
+    console.log(link)
     popupElt.classList.remove("hidden")
-    console.log(poster_param)
     popupElt.innerHTML = `
     <div class = "popup-top">    
     <button id="popup-close-btn" onclick=hidePopup()><i class="material-icons" id="close-icon">close</i></button>
          <p class="original-title">${poster_param.original_title}</p>
          </div>
+         <iframe src=${link}></iframe>
          <img src="https://image.tmdb.org/t/p/original${poster_param.backdrop_path}"
-        alt=${poster_param.original_title} ">
+        alt=${poster_param.original_title} " class ="backdrop">
         <p>${poster_param.release_date} | <span>&#x2B50</span>${poster_param.vote_average} | ${poster_param.original_language.toUpperCase()}</p>
         <p>${poster_param.overview}</p>
     `
