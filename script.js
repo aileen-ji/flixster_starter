@@ -37,6 +37,10 @@ async function getUserInput(evt){
     }
     currSearch = input;
     let result = await getResults(input);
+    if(result.length == 0){
+        alert("No results")
+        clearResults()
+    }
     displayResults(result)
     userInput.value = ""
     showMoreBtn();
