@@ -144,6 +144,7 @@ function clearResults(){
     userInput.value = ""
     moviesGrid.innerHTML = ``
     currSearch = ""
+    showingCurr = true
     nowPlaying();
 }
 
@@ -156,7 +157,7 @@ async function getCurr(){
 
 async function nowPlaying(){
     page = 1;
-    showingCurr = true
+    
     hideMoreBtn();
     
     moviesGrid.innerHTML = ``

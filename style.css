@@ -40,46 +40,65 @@ body{
     
 }
 
-form{
+@keyframes show{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@keyframes hide{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+
+#search-bar{
     justify-content: center;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1vw auto;
     padding: 20px;
     border-radius: 50px;
     font-size: x-large;
+    align-items: baseline;
+}
+
+form{
+    align-items: baseline;
 }
 
 #search-input{
-    padding-left: 2vw;
-    border-width: 2px;
-    border-left: none;
-    border-right: none;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 30vw;
     outline:none;
     font-size: large;
-    background-color: white;
-}
-
-form button{
-    padding: 5px;
     border-width: 2px;
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    
+    padding-left: 10px;
 }
 
-#search-btn{
+#search-bar button{
+    padding: 5px;
+    border-width: 0;
+}
+
+.dark-mode #search-bar i{
+    color: white
+}
+
+#search-icon{
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     border-right: none;
-    padding-left: 10px;
-    background-color: white;
+    transform: translateY(0.5vw)
 }
 
 #close-search-btn{
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     border-left: none;
-    padding-right: 10px;
-    background-color: white;
+    transform: translateY(0.5vw)
 }
 
 
@@ -163,6 +182,9 @@ h2{
     color: black;
     display: flexbox;
     overflow: hidden;
+    animation-name: show;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
 }
 
 #popup-div p{
@@ -219,6 +241,7 @@ iframe{
 .dark-mode{
     background: linear-gradient(#09203F, #537895);
     color: white;
+    
 }
 
 .dark-mode #popup-div{
