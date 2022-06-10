@@ -72,8 +72,8 @@ function displayResults(resultparam){
         moviesGrid.innerHTML += `
         <div class = "movie-card grid-item">
             <img  class="movie-poster" src=${poster} alt=${resultparam[i].original_title} id=${i}>
-            <p id = "movie-votes"><span>&#x2B50</span>${resultparam[i].vote_average}</p>
-            <p id = "movie-title">${resultparam[i].original_title}</p>
+            <p class = "movie-votes"><span>&#x2B50</span>${resultparam[i].vote_average}</p>
+            <p class = "movie-title">${resultparam[i].original_title}</p>
         </div>
 `   
     
