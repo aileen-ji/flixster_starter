@@ -70,9 +70,9 @@ function displayResults(resultparam){
         
         moviesGrid.innerHTML += `
         <div class = "movie-card grid-item">
-            <img  class="movie-poster" src=${poster} alt=${resultparam[i].original_title} id=${i}>
+            <img  class="movie-poster" src=${poster} alt=${resultparam[i].title} id=${i}>
             <p class = "movie-votes"><span>&#x2B50</span>${resultparam[i].vote_average}</p>
-            <p class = "movie-title">${resultparam[i].original_title}</p>
+            <p class = "movie-title">${resultparam[i].title}</p>
         </div>
 `   
     
@@ -105,11 +105,11 @@ async function showPopup(poster_param){
     popupElt.innerHTML = `
     <div class = "popup-top">    
     <button id="popup-close-btn" onclick=hidePopup()><i class="material-icons" id="close-icon">close</i></button>
-         <p class="original-title">${poster_param.original_title}</p>
+         <p class="original-title">${poster_param.title}</p>
          </div>
          <iframe src=${link}></iframe>
          <img src="https://image.tmdb.org/t/p/original${poster_param.backdrop_path}"
-        alt=${poster_param.original_title} " class ="backdrop">
+        alt=${poster_param.title} " class ="backdrop">
         <p>${poster_param.release_date} | <span>&#x2B50</span>${poster_param.vote_average} | ${poster_param.original_language.toUpperCase()}</p>
         <p>${poster_param.overview}</p>
     `
